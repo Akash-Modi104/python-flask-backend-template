@@ -1,2 +1,2 @@
 # python-flask-backend-template
-it will . sample template for creating a flask backend  web app with flask
+It will create a sample template for creating a flask backend  web app with python

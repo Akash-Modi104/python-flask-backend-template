@@ -1,0 +1,23 @@
+{
+  "DEV":{
+    "DB_HOST":"localhost",
+    "DB_PORT": "3306",
+    "DB_USER": "",
+    "DB_PASS": ""
+  },
+ "TEST":{
+    "DB_NAME": ""
+  },
+   "PRE_PROD":{
+    "DB_HOST":"localhost",
+    "DB_PORT": "3306",
+    "DB_USER": "",
+    "DB_PASS": ""
+  },
+   "PROD":{
+     "DB_HOST":"localhost",
+     "DB_PORT": "3306",
+     "DB_USER": "",
+     "DB_PASS": ""
+  }
+}

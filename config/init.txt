@@ -1,0 +1,50 @@
+import json
+import logging
+import os
+import pathlib
+from typing import Any
+
+from flask import Flask
+from flask_cors import CORS
+
+from config.log_config import setup_logger
+from application.database.intialize_database import create_table_not_exits
+
+app= Flask(__name__)
+logger= logging.getLogger(__name__)
+
+def create_app(env:str)->Any:
+    try:
+        CORS(app=app)
+        setup_logger(env)
+
+        project_path=pathlib.Path(__file__).parent.parent
+        with open(os.path.join(project_path,'configs','config,json')) as config_file:
+            json_details = json.load(config_file)
+            json_data = json_details.get(env,"DEV")
+            app.config["SERVER_CONFIG"] = json_data
+            #app.secret_key = app.config.get('SECRET_KEY')
+            app.config["MODE"]= env
+            app.config["PROJECT_PATH"] = project_path
+
+        with app.app_context():
+            if env == "TEST":
+                file_path = os.path.join(pathlib.Path(__file__).parent.parent,
+                                    "tests",
+                                    f"{json_data['DB_NAME']}.sqlite")
+                if os.path.exists(file_path):
+                    os.remove(file_path)
+                app.config['SQLALCHEMY_DATABASE_URI']= f'sqlite:///{file_path},
+            else:
+                app.config['SQLALCHEMY_DATABASE_URI']= f'mysql+mysqldb://{json_data['DB_USER']}:' \
+                                                       f'{json_data["DB_PASS"]@{json_data["DB_HOST"]}:' \
+                                                       f'{json_data["DB_PORT"]}/{json_data["DB_NAME"]}'
+                app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+                create_table_not_exits(app)
+                from application.controllers import routes_controller
+                logger.info("####### app started #########")
+                return app
+    except Exception as e:
+        logger.error(e)
+        return None
+

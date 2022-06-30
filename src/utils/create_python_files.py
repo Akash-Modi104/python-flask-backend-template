@@ -11,4 +11,3 @@ def create_init_py():
     with open(os.path.join(project_path,"application","__init__.py"), 'w') as f:
         f.write(data)
 
-create_init_py()

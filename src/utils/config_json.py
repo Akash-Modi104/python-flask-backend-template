@@ -11,3 +11,4 @@ def create_config_json():
 
     with open(os.path.join(project_path,"configs","config.json"), 'w') as f:
         json.dump(data, f, indent=2)
+

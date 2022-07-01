@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-flask-backend-template "
+version = "0.0.1"
+authors = [
+  { name="Akash Modi", email="developer.akash104@gmail.com" },
+]
+description = "package to create a pytjon flask backend template"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Akash-Modi104/python-flask-backend-template"
+"Bug Tracker" = "https://github.com/Akash-Modi104/python-flask-backend-template/issues"

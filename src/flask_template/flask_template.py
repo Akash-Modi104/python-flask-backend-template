@@ -14,7 +14,7 @@ class Flask_Backend_Template:
         self.database = os.path.join(pathlib.Path(__file__).resolve().parent.parent.parent, "application", "database")
         self.models = os.path.join(pathlib.Path(__file__).resolve().parent.parent.parent, "application", "models")
         self.views = os.path.join(pathlib.Path(__file__).resolve().parent.parent.parent, "application", "views")
-        self.utils = os.path.join(pathlib.Path(__file__).resolve().parent.parent.parent, "application", "utils")
+        self.utils = os.path.join(pathlib.Path(__file__).resolve().parent.parent.parent, "application", "../utils")
         self.tests = os.path.join(pathlib.Path(__file__).resolve().parent.parent.parent, "tests")
 
         create_dirs([self.configs_path, self.application_path, self.controllers, self.database,
